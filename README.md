@@ -193,50 +193,7 @@ local Button = aimbotTab:CreateButton({
 })
 
 
-getgenv().teleportEnabled = false
 
-local Toggle = aimbotTab:CreateToggle({
-    Name = "Slapple Farm",
-    CurrentValue = false,
-    Flag = "TeleportToggle",
-    Callback = function(Value)
-        getgenv().teleportEnabled = Value
-
-        local player = game.Players.LocalPlayer
-        if not player or not player.Character or not player.Character:FindFirstChild("HumanoidRootPart") then return end
-
-        local humanoidRootPart = player.Character.HumanoidRootPart
-
-        local locations = {
-            Vector3.new(-224.98114013671875, 6126.7158203125, 484.705810546875),
-            Vector3.new(-312.94866943359375, 6186.44775390625, -394.93756103515625),
-            Vector3.new(-224.68707275390625, 6175.63427734375, 593.5723876953125),
-            Vector3.new(-189.69598388671875, 6171.33349609375, 594.4552612304688),
-            Vector3.new(-174.95452880859375, 6125.9990234375, 564.5806884765625),
-            Vector3.new(-161.24725341796875, 6135.458984375, 504.67755126953125),
-            Vector3.new(-261.95635986328125, 6126.3330078125, 555.8439331054688),
-            Vector3.new(-267.85931396484375, 6126.4677734375, 518.296142578125),
-            Vector3.new(-537.5476684570312, 6186.4140625, -311.90362548828125),
-            Vector3.new(-531.8552856445312, 6186.00244140625, -293.7408447265625),
-            Vector3.new(-412.51519775390625, 6185.228515625, -486.0479736328125),
-            Vector3.new(-169.58807373046875, 6132.755859375, 512.9716186523438),
-            Vector3.new(-219.95013427734375, 6166.21533203125, 572.8008422851562),
-            Vector3.new(-261.95672607421875, 6145.9375, 542.096923828125),
-            Vector3.new(-211.42474365234375, 6126.5859375, 599.59912109375),
-            Vector3.new(-194.39923095703125, 6173.8564453125, 575.3776245117188)
-        }
-
-        task.spawn(function()
-            while getgenv().teleportEnabled do
-                for _, pos in ipairs(locations) do
-                    if not getgenv().teleportEnabled then return end
-                    humanoidRootPart.CFrame = CFrame.new(pos)
-                    task.wait(0.05)
-                end
-            end
-        end)
-    end,
-})
 
  
  
@@ -274,6 +231,47 @@ local Toggle = aimbotTab:CreateToggle({
 })
 
 
+local Toggle = visualsTab:CreateToggle({
+    Name = "Infinite Teleport",
+    CurrentValue = false,
+    Flag = "TeleportToggle",
+    Callback = function(Value)
+        task.spawn(function()
+            local player = game.Players.LocalPlayer
+            if not player or not player.Character or not player.Character:FindFirstChild("HumanoidRootPart") then return end
+
+            local humanoidRootPart = player.Character.HumanoidRootPart
+            local locations = {
+                Vector3.new(-224.98114013671875, 6126.7158203125, 484.705810546875),
+                Vector3.new(-312.94866943359375, 6186.44775390625, -394.93756103515625),
+                Vector3.new(-224.68707275390625, 6175.63427734375, 593.5723876953125),
+                Vector3.new(-189.69598388671875, 6171.33349609375, 594.4552612304688),
+                Vector3.new(-174.95452880859375, 6125.9990234375, 564.5806884765625),
+                Vector3.new(-161.24725341796875, 6135.458984375, 504.67755126953125),
+                Vector3.new(-261.95635986328125, 6126.3330078125, 555.8439331054688),
+                Vector3.new(-267.85931396484375, 6126.4677734375, 518.296142578125),
+                Vector3.new(-537.5476684570312, 6186.4140625, -311.90362548828125),
+                Vector3.new(-531.8552856445312, 6186.00244140625, -293.7408447265625),
+                Vector3.new(-412.51519775390625, 6185.228515625, -486.0479736328125),
+                Vector3.new(-169.58807373046875, 6132.755859375, 512.9716186523438),
+                Vector3.new(-219.95013427734375, 6166.21533203125, 572.8008422851562),
+                Vector3.new(-261.95672607421875, 6145.9375, 542.096923828125),
+                Vector3.new(-211.42474365234375, 6126.5859375, 599.59912109375),
+                Vector3.new(-194.39923095703125, 6173.8564453125, 575.3776245117188)
+            }
+
+            while getgenv().teleportEnabled do
+                for _, pos in ipairs(locations) do
+                    if not getgenv().teleportEnabled then return end
+                    humanoidRootPart.CFrame = CFrame.new(pos)
+                    task.wait(0.05)
+                end
+            end
+        end)
+        
+        getgenv().teleportEnabled = Value
+    end,
+})
 
  
  
