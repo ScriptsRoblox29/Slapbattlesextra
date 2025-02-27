@@ -141,6 +141,35 @@ local Button = aimbotTab:CreateButton({
    end,
 })
 
+
+local Button = aimbotTab:CreateButton({
+   Name = "Slap Aura (support on some gloves)",
+   Callback = function()
+       local player = game.Players.LocalPlayer
+       if not player or not player.Character then return end
+
+       local glovesList = {
+           "Default", "OVERKILL", "ZZZZZZZ", "Diamond", "Brick", "Snow", 
+           "Dice", "Stun", "Flash", "Replica", "Reverse", "Defense", 
+           "MEGAROCK", "Rocky", "Reaper", "Blocked", "God's Hand", 
+           "The Flex", "Exploit", "Weakness", "Builder", "Dual", "Troll", 
+           "Box"
+       }
+
+       for _, tool in ipairs(player.Character:GetChildren()) do
+           if tool:IsA("Tool") and table.find(glovesList, tool.Name) then
+               for _, obj in ipairs(tool:GetDescendants()) do
+                   if obj:IsA("MeshPart") and obj.Name == "Hand" then
+                       obj.Size = Vector3.new(75, 75, 75)
+                       obj.Material = Enum.Material.ForceField
+                       obj.Color = Color3.fromRGB(0, 255, 0)
+                   end
+               end
+           end
+       end
+   end,
+})
+
  
  
  
