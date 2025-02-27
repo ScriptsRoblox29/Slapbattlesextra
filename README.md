@@ -171,7 +171,7 @@ local Button = aimbotTab:CreateButton({
 })
 
 
-local Button = mainTab:CreateButton({
+local Button = aimbotTab:CreateButton({
    Name = "Remove Mod call of all",
    Callback = function()
        for _, player in ipairs(game.Players:GetPlayers()) do
