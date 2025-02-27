@@ -170,6 +170,29 @@ local Button = aimbotTab:CreateButton({
    end,
 })
 
+
+local Button = mainTab:CreateButton({
+   Name = "Remove Mod call of all",
+   Callback = function()
+       for _, player in ipairs(game.Players:GetPlayers()) do
+           if player:FindFirstChild("PlayerGui") then
+               local playerGui = player.PlayerGui
+               local mainGui = playerGui:FindFirstChild("MainGui")
+               if mainGui then
+                   local buttons = mainGui:FindFirstChild("Buttons")
+                   if buttons then
+                       local reportFrame = buttons:FindFirstChild("ReportFrame")
+                       if reportFrame and reportFrame:IsA("TextLabel") then
+                           reportFrame:Destroy()
+                       end
+                   end
+               end
+           end
+       end
+   end,
+})
+
+
  
  
  
