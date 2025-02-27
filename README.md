@@ -195,7 +195,7 @@ local Button = aimbotTab:CreateButton({
 
 getgenv().teleportEnabled = false
 
-local Toggle = visualsTab:CreateToggle({
+local Toggle = aimbotTab:CreateToggle({
     Name = "Slapple Farm",
     CurrentValue = false,
     Flag = "TeleportToggle",
