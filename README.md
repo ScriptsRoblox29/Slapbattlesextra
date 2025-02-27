@@ -231,7 +231,7 @@ local Button = aimbotTab:CreateButton({
 })
 
 
-local Toggle = visualsTab:CreateToggle({
+local Toggle = aimbotTab:CreateToggle({
     Name = "Infinite Teleport",
     CurrentValue = false,
     Flag = "TeleportToggle",
