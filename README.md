@@ -116,7 +116,17 @@ local Toggle = playerTab:CreateToggle({
 local creditTab = Window:CreateTab("Credits", "crosshair")
  
  local Section = playerTab:CreateSection("credits")
+
+
+ local Label = creditTab:CreateLabel("Creator of script: isssacque1234", 4483362458, Color3.fromRGB(255, 255, 255), false) -- Title, Icon, Color, IgnoreTheme
+
+ local Label = creditTab:CreateLabel("taught me how to make a script: @stratxgydev", 4483362458, Color3.fromRGB(255, 255, 255), false) -- Title, Icon, Color, IgnoreTheme
  
+
+ local tpTab = Window:CreateTab("Teleport", "crosshair")
+ 
+ local Section = playerTab:CreateSection("teleport to places")
+
  
  Rayfield:Notify({
     Title = "Ready!",
