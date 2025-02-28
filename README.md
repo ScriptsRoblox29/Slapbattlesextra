@@ -300,7 +300,7 @@ local Toggle = usefulTab:CreateToggle({
 
 local tpTab = Window:CreateTab("Teleport", "crosshair")
  
- local Section = usefulTab:CreateSection("teleports")
+ local Section = tpTab:CreateSection("teleports")
 
 
  local Button = tpTab:CreateButton({
