@@ -322,7 +322,7 @@ local Button = tpTab:CreateButton({
        if not player or not player.Character or not player.Character:FindFirstChild("HumanoidRootPart") then return end
 
        local humanoidRootPart = player.Character.HumanoidRootPart
-       humanoidRootPart.CFrame = CFrame.new(-29.6503849029541, 6082.54638671875, 85.0864028930664)
+       humanoidRootPart.CFrame = CFrame.new(-29.6503849029541, 6082.54638671875, 85.0864028930664) -- teleport
    end,
 })
  
