@@ -224,7 +224,7 @@ local Button = aimbotTab:CreateButton({
 
  local gloveTab = Window:CreateTab("Glove", "crosshair")
  
- local Section = playerTab:CreateSection("change your glove idk")
+ local Section = gloveTab:CreateSection("change your glove idk")
 
 
  local Button = gloveTab:CreateButton({
@@ -258,7 +258,7 @@ local Button = aimbotTab:CreateButton({
 
  local usefulTab = Window:CreateTab("useful", "crosshair")
  
- local Section = playerTab:CreateSection("this will help")
+ local Section = usefulTab:CreateSection("this will help")
 
 
  local Button = usefulTab:CreateButton({
