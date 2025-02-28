@@ -105,30 +105,6 @@ local Window = Rayfield:CreateWindow({
 
 
 local Button = aimbotTab:CreateButton({
-   Name = "TP to lobby",
-   Callback = function()
-       local player = game.Players.LocalPlayer
-       if not player or not player.Character or not player.Character:FindFirstChild("HumanoidRootPart") then return end
-
-       local humanoidRootPart = player.Character.HumanoidRootPart
-       humanoidRootPart.CFrame = CFrame.new(-550.1726684570312, 6313.1767578125, -2.789579153060913)
-   end,
-})
-
-
-local Button = aimbotTab:CreateButton({
-   Name = "TP to area",
-   Callback = function()
-       local player = game.Players.LocalPlayer
-       if not player or not player.Character or not player.Character:FindFirstChild("HumanoidRootPart") then return end
-
-       local humanoidRootPart = player.Character.HumanoidRootPart
-       humanoidRootPart.CFrame = CFrame.new(-29.6503849029541, 6082.54638671875, 85.0864028930664)
-   end,
-})
-
-
-local Button = aimbotTab:CreateButton({
    Name = "Remove Mod call of all (no work more)",
    Callback = function()
        for _, player in ipairs(game.Players:GetPlayers()) do
@@ -319,6 +295,35 @@ local Toggle = usefulTab:CreateToggle({
             getgenv().teleportEnabled = false
         end
     end,
+})
+
+
+local tpTab = Window:CreateTab("Teleport", "crosshair")
+ 
+ local Section = usefulTab:CreateSection("teleports")
+
+
+ local Button = tpTab:CreateButton({
+   Name = "TP to lobby",
+   Callback = function()
+       local player = game.Players.LocalPlayer
+       if not player or not player.Character or not player.Character:FindFirstChild("HumanoidRootPart") then return end
+
+       local humanoidRootPart = player.Character.HumanoidRootPart
+       humanoidRootPart.CFrame = CFrame.new(-550.1726684570312, 6313.1767578125, -2.789579153060913)
+   end,
+})
+
+
+local Button = tpTab:CreateButton({
+   Name = "TP to area",
+   Callback = function()
+       local player = game.Players.LocalPlayer
+       if not player or not player.Character or not player.Character:FindFirstChild("HumanoidRootPart") then return end
+
+       local humanoidRootPart = player.Character.HumanoidRootPart
+       humanoidRootPart.CFrame = CFrame.new(-29.6503849029541, 6082.54638671875, 85.0864028930664)
+   end,
 })
  
  
