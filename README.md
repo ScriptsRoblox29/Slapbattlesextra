@@ -339,6 +339,23 @@ local Toggle = usefulTab:CreateToggle({
 })
 
 
+local Button = usefulTab:CreateButton({
+    Name = "become invisible",
+    Callback = function()
+        local player = game.Players.LocalPlayer
+        if not player or not player.Character then return end
+
+        for _, part in pairs(player.Character:GetChildren()) do
+            if part:IsA("BasePart") or part:IsA("MeshPart") then
+                part.Transparency = 1
+            elseif part:IsA("Accessory") and part:FindFirstChild("Handle") then
+                part.Handle.Transparency = 1
+            end
+        end
+    end
+})
+
+
 local tpTab = Window:CreateTab("Teleport", "crosshair")
  
  local Section = tpTab:CreateSection("teleports")
