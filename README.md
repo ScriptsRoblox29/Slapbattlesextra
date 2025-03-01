@@ -340,7 +340,7 @@ local Toggle = usefulTab:CreateToggle({
 
 
 local Button = usefulTab:CreateButton({
-    Name = "Become invisible",
+    Name = "become invisible",
     Callback = function()
         local player = game.Players.LocalPlayer
         if not player or not player.Character then return end
@@ -348,8 +348,10 @@ local Button = usefulTab:CreateButton({
         for _, part in pairs(player.Character:GetChildren()) do
             if part:IsA("BasePart") or part:IsA("MeshPart") then
                 part.Transparency = 1
+                part.CanCollide = false
             elseif part:IsA("Accessory") and part:FindFirstChild("Handle") then
                 part.Handle.Transparency = 1
+                part.Handle.CanCollide = false
             end
         end
 
@@ -360,7 +362,24 @@ local Button = usefulTab:CreateButton({
                 faceDecal.Transparency = 1
             end
         end
-    end,
+
+        for _, otherPlayer in pairs(game.Players:GetPlayers()) do
+            if otherPlayer ~= player then
+                local character = otherPlayer.Character
+                if character then
+                    for _, part in pairs(character:GetChildren()) do
+                        if part:IsA("BasePart") or part:IsA("MeshPart") then
+                            part.Transparency = 1
+                            part.CanCollide = false
+                        elseif part:IsA("Accessory") and part:FindFirstChild("Handle") then
+                            part.Handle.Transparency = 1
+                            part.Handle.CanCollide = false
+                        end
+                    end
+                end
+            end
+        end
+    end
 })
 
 
