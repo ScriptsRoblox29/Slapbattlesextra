@@ -340,7 +340,7 @@ local Toggle = usefulTab:CreateToggle({
 
 
 local Button = usefulTab:CreateButton({
-    Name = "become invisible",
+    Name = "Become invisible",
     Callback = function()
         local player = game.Players.LocalPlayer
         if not player or not player.Character then return end
@@ -352,7 +352,15 @@ local Button = usefulTab:CreateButton({
                 part.Handle.Transparency = 1
             end
         end
-    end
+
+        local head = player.Character:FindFirstChild("Head")
+        if head then
+            local faceDecal = head:FindFirstChildWhichIsA("Decal")
+            if faceDecal then
+                faceDecal.Transparency = 1
+            end
+        end
+    end,
 })
 
 
