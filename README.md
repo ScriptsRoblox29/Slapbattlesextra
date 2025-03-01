@@ -298,6 +298,47 @@ local Toggle = usefulTab:CreateToggle({
 })
 
 
+local Toggle = usefulTab:CreateToggle({
+    Name = "Slap Farm (use slap aura to be more useful)",
+    CurrentValue = false,
+    Flag = "MoveToggle",
+    Callback = function(Value)
+        getgenv().moveToPlayers = Value
+
+        if Value then
+            task.spawn(function()
+                local player = game.Players.LocalPlayer
+                if not player or not player.Character or not player.Character:FindFirstChild("HumanoidRootPart") then return end
+
+                local humanoidRootPart = player.Character.HumanoidRootPart
+
+                while getgenv().moveToPlayers do
+                    for _, targetPlayer in pairs(game.Players:GetPlayers()) do
+                        if targetPlayer ~= player then
+                            local targetChar = targetPlayer.Character
+                            if targetChar and targetChar:FindFirstChild("HumanoidRootPart") then
+                                local targetPosition = targetChar.HumanoidRootPart.Position
+                                local currentPosition = humanoidRootPart.Position
+                                
+                                local direction = (targetPosition - currentPosition).unit
+                                
+                                local moveSpeed = 250
+                                local newPosition = currentPosition + direction * moveSpeed * 0.1
+                                
+                                humanoidRootPart.CFrame = CFrame.new(newPosition)
+                                task.wait(0.05)
+                            end
+                        end
+                    end
+                end
+            end)
+        else
+            getgenv().moveToPlayers = false
+        end
+    end
+})
+
+
 local tpTab = Window:CreateTab("Teleport", "crosshair")
  
  local Section = tpTab:CreateSection("teleports")
@@ -340,3 +381,4 @@ Rayfield:Notify({
     Duration = 10,
     Image = 4483362458,
  })
+ 
